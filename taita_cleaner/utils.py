@@ -8,17 +8,11 @@ import re
 import unicodedata
 from collections import Counter
 
-# words are letters plus the apostrophe (meaningful in Kidaw'ida spelling,
-# e.g. ng'ombe) -- extracted lowercase for frequency counting / matching.
+
 TOKEN_RE = re.compile(r"[a-zA-Z']+")
 
-# transcript markers like Kikuyu's [Pause]/[cs] -- kept for parity with that
-# tool's API and in case future data has them. None have shown up in the
-# Kidaw'ida-Kiswahili corpus so far, so this is currently a light passthrough.
 MARKER_RE = re.compile(r"\[[^\]]*\]")
 
-# mojibake / typographic characters that sometimes leak in from copy-pasted
-# text, normalized to their plain-ASCII equivalents.
 CHAR_FIXUPS = {
     "’": "'",   # ' -> '
     "‘": "'",   # ' -> '
