@@ -29,11 +29,6 @@ CONFIRMED_CORRECTIONS = {
     "uja": "ujha",             # missing h
 }
 
-# Pairs explicitly confirmed to be DIFFERENT words, one edit apart by
-# coincidence -- an analyzer/miner must never propose merging these, even
-# at a high frequency ratio. Most of these are Bantu-style noun-class
-# concord/agreement particles (like Swahili cha/vya/la/ya/wa), not
-# misspellings of one shared word.
 CONFIRMED_DISTINCT = {
     frozenset(("kwa", "lwa")),
     frozenset(("gha", "ghwa")),
@@ -48,20 +43,12 @@ CONFIRMED_DISTINCT = {
     frozenset(("saa", "shaa")),
 }
 
-# Words that are real on their own but are NEVER a correct spelling of
-# another word -- and also can't be blanket-corrected, because which
-# meaning applies depends on the sentence. The cleaner leaves these alone
-# rather than guess.
 AMBIGUOUS_WORDS = {
     "mana": "Real word with its own meaning; never a correct spelling of "
             "'mwana', but not every occurrence is wrong either -- needs "
             "per-sentence judgment, not a blanket rule. Left untouched.",
 }
 
-# Specific sentence-level usage errors -- the right word exists, but the
-# wrong one was used for this grammatical slot (grammar/agreement, not
-# spelling). Not something a word-level correction map can fix generally;
-# logged here so they aren't lost, applied only to the exact sentence.
 FLAGGED_SENTENCES = [
     {
         "sentence": "Wusalama gha barabarenyi ni muhimu saana",
