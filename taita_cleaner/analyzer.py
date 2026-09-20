@@ -31,8 +31,6 @@ class TaitaAnalyzer:
         pair = frozenset((a, b))
         if pair in CONFIRMED_DISTINCT:
             return True
-        # a correction already maps one side to the other (or both to a
-        # shared standard form) -- no need to ask about it again
         resolved_a = CONFIRMED_CORRECTIONS.get(a, a)
         resolved_b = CONFIRMED_CORRECTIONS.get(b, b)
         return resolved_a == resolved_b and (a in CONFIRMED_CORRECTIONS or b in CONFIRMED_CORRECTIONS)
